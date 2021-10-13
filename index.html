@@ -36,7 +36,9 @@
                 "height" : "200px",
                 "border" : "none",
                 "padding-left" : "15px",
+                "padding-right" : "15px",
                 "padding-top" : "10px",
+                "padding-bottom" : "10px",
                 "outline" : "none",
                 "resize" : "none"
             });
@@ -51,7 +53,9 @@
             });
             $("p").css({
                 "padding-left" : "15px",
-                "padding-top" : "10px"
+                "padding-right" : "15px",
+                "padding-top" : "10px",
+                "padding-bottom" : "10px"
             });
             let text = marked($("#editor").val());
             $("#preview-text").html(text);
@@ -59,6 +63,7 @@
                 let text = marked($("#editor").val());
                 $("#preview-text").html(text);
             });
+            $("img").addClass("img-responsive");
         });
     </script>
     <title>Markdown Previewer</title>
