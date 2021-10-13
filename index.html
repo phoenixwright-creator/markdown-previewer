@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $(".title-div").css({
+                "background-color" : "rgb(234, 220, 150)",
+                "border" : "1px solid black",
+                "margin" : "0px",
+                "padding" : "0px",
+                "height" : "50px",
+                "display" : "flex",
+                "align-items" : "center"
+            });
+            $("h2").css({
+                "margin" : "0px",
+                "padding-left" : "14px"
+            });
+            $("#editor-div").css({
+                "width" : "600px",
+                "margin-top" : "50px",
+                "box-shadow" : "5px 5px 5px -1px"
+            });
+            $("#preview-div").css({
+                "width" : "900px",
+                "margin-top" : "50px",
+                "box-shadow" : "5px 5px 5px -1px"
+            });
+            $("#editor").css({
+                "width" : "100%",
+                "height" : "200px",
+                "border" : "none",
+                "padding-left" : "15px",
+                "padding-top" : "10px",
+                "outline" : "none",
+                "resize" : "none"
+            });
+            $(".content-div").css({
+                "margin" : "0px",
+                "padding" : "0px",
+                "border" : "1px solid black",
+                "background-color" : "white"
+            });
+            $("body").css({
+                "background-color" : "rgb(137, 137, 106)"
+            });
+            $("p").css({
+                "padding-left" : "15px",
+                "padding-top" : "10px"
+            });
+        });
+    </script>
+    <title>Markdown Previewer</title>
+</head>
+<body>
+    <div class="container-fluid">
+        <div id="editor-div" class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 title-div">
+                    <h2>Editor</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 content-div">
+                    <textarea name="editor" id="editor" cols="" rows=""></textarea>
+                </div>
+            </div>
+        </div>
+        <div id="preview-div" class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 title-div">
+                    <h2>Preview</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 content-div">
+                    <p>Preview of the editor</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
