@@ -5,8 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/3.0.7/marked.min.js" integrity="sha512-a+W0h6Sho4fGYABZAQg6zdWP/qtyE+gzeVfNB/UApXRLuHKh7bT3TeA/LUOno+pcDjX0Vfzgtz6crFQC3YL9lA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/3.0.7/marked.js" integrity="sha512-bmPvSmylu61MJvIkoxmJKes5pZa2q9cqkbsJfB8mdtDI7k9buccnC8Swy5DgKxBaGd2rq907F/iS1T3FX0CbYQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js" defer></script>
     <script>
         $(document).ready(function() {
             $(".title-div").css({
@@ -58,10 +59,11 @@
                 "padding-bottom" : "10px"
             });
             let text = marked($("#editor").val());
-            $("#preview-text").html(text);
-            $("#editor").change(function() {
+            $("#preview").html(text);
+            $(document).on("change", "#editor", function(event) {
+                console.log(event.target.value);
                 let text = marked($("#editor").val());
-                $("#preview-text").html(text);
+                $("#preview").html(text);
             });
             $("img").addClass("img-responsive");
         });
@@ -78,7 +80,7 @@
             </div>
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 content-div">
-                    <textarea name="editor" id="editor" cols="" rows=""></textarea>
+                    <textarea oninput="changeText" name="editor" id="editor" cols="" rows=""></textarea>
                 </div>
             </div>
         </div>
@@ -90,7 +92,7 @@
             </div>
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 content-div">
-                    <p id="preview-text"></p>
+                    <p id="preview"></p>
                 </div>
             </div>
         </div>
