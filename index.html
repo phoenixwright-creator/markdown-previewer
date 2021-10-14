@@ -5,9 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/3.0.7/marked.js" integrity="sha512-bmPvSmylu61MJvIkoxmJKes5pZa2q9cqkbsJfB8mdtDI7k9buccnC8Swy5DgKxBaGd2rq907F/iS1T3FX0CbYQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js" defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
         $(document).ready(function() {
             $(".title-div").css({
@@ -56,16 +55,22 @@
                 "padding-left" : "15px",
                 "padding-right" : "15px",
                 "padding-top" : "10px",
-                "padding-bottom" : "10px"
+                "padding-bottom" : "10px",
             });
-            let text = marked($("#editor").val());
-            $("#preview").html(text);
-            $(document).on("change", "#editor", function(event) {
-                console.log(event.target.value);
-                let text = marked($("#editor").val());
-                $("#preview").html(text);
+            marked.setOptions({
+                "gfm" : true,
+                "breaks" : true,
+                "xhtml" : true
             });
+            let defaultText = "# Welcome to my React Markdown Previewer!\n\n## This is a sub-heading...\n### And here's some other cool stuff:\n\nHeres some code, `<div></div>`, between 2 backticks.\n\n```\n// this is multi-line code:\n\nfunction anotherExample(firstLine, lastLine) {\n\tif (firstLine == '```' && lastLine == '```') {\n\t\treturn multiLineCode;\n\t}\n}\n```\n\nYou can also make text **bold**... whoa!\nOr _italic_.\nOr... wait for it... **_both!_**\nAnd feel free to go crazy ~~crossing stuff out~~.\n\nThere's also [links](https://www.freecodecamp.org), and\n> Block Quotes!\n\nAnd if you want to get really crazy, even tables:\n\nWild Header | Crazy Header | Another Header?\n------------ | ------------- | -------------\nYour content can | be here, and it | can be here....\nAnd here. | Okay. | I think we get it.\n\n- And of course there are lists.\n\t- Some are bulleted.\n\t\t- With different indentation levels.\n\t\t\t- That look like this.\n\n\n1. And there are numbered lists too.\n1. Use just 1s if you want!\n1. And last but not least, let's not forget embedded images:\n\n![freeCodeCamp Logo](https://cdn.freecodecamp.org/testable-projects-fcc/images/fcc_secondary.svg)";
+            const para = document.getElementById("preview");
+            $("#editor").val(defaultText);
+            para.innerHTML = marked(defaultText);
             $("img").addClass("img-responsive");
+            $("#editor").on("keyup", function(event) {
+                para.innerHTML = marked($(this).val());
+                $("img").addClass("img-responsive");
+            });
         });
     </script>
     <title>Markdown Previewer</title>
@@ -80,7 +85,7 @@
             </div>
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 content-div">
-                    <textarea oninput="changeText" name="editor" id="editor" cols="" rows=""></textarea>
+                    <textarea name="editor" id="editor" cols="" rows=""></textarea>
                 </div>
             </div>
         </div>
@@ -97,5 +102,6 @@
             </div>
         </div>
     </div>
+    <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
 </body>
 </html>
